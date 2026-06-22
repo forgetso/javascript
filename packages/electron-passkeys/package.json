@@ -29,8 +29,8 @@
   ],
   "scripts": {
     "artifacts": "napi artifacts --output-dir artifacts --npm-dir npm",
-    "build": "napi build --platform --release --no-js --dts native.d.ts",
     "build:debug": "napi build --platform --no-js --dts native.d.ts",
+    "build:native": "napi build --platform --release --no-js --dts native.d.ts",
     "test": "node --test test/loader.test.cjs"
   },
   "devDependencies": {

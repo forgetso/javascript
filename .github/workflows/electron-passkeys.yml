@@ -53,7 +53,7 @@ jobs:
         working-directory: .
 
       - name: Build native module
-        run: pnpm build --target ${{ matrix.settings.target }}
+        run: pnpm build:native --target ${{ matrix.settings.target }}
 
       - name: Smoke test (host-native targets only)
         if: matrix.settings.target == 'aarch64-apple-darwin' || matrix.settings.target == 'x86_64-pc-windows-msvc'
