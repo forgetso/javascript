@@ -1,6 +1,7 @@
 name: Electron Passkeys Native Build
 
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     paths:
@@ -8,7 +9,7 @@ on:
       - '.github/workflows/electron-passkeys.yml'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: electron-passkeys-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -94,12 +95,18 @@ jobs:
         run: pnpm artifacts
 
       - name: Verify every platform package contains its binary
+        run: node scripts/check-electron-passkeys-binaries.mjs packages/electron-passkeys/npm
+        working-directory: .
+
+      - name: Verify every platform package can be packed
         run: |
           for dir in npm/*/; do
-            count=$(find "$dir" -name '*.node' | wc -l)
-            if [ "$count" -ne 1 ]; then
-              echo "::error::$dir is missing its .node binary — publishing it would ship an empty package"
-              exit 1
-            fi
             (cd "$dir" && npm pack --dry-run)
           done
+
+      - name: Upload assembled platform binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-passkeys-npm
+          path: packages/electron-passkeys/npm/**/*.node
+          if-no-files-found: error
