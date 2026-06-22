@@ -1,5 +1,18 @@
 # Change Log
 
+## 6.21.0
+
+### Minor Changes
+
+- Expose the loaded `@clerk/ui` version on the `Clerk` object via a new `uiVersion` property. It returns the version of the prebuilt UI bundle once it has loaded (for example `Clerk.uiVersion` in the browser console), or `undefined` if the UI has not been loaded yet. `@clerk/clerk-js` and `@clerk/ui` are versioned and loaded independently, so `uiVersion` can differ from `Clerk.version`. ([#8931](https://github.com/clerk/javascript/pull/8931)) by [@jacekradko](https://github.com/jacekradko)
+
+### Patch Changes
+
+- Allow changing enterprise connection provider between self-serve SSO steps ([#8881](https://github.com/clerk/javascript/pull/8881)) by [@LauraBeatris](https://github.com/LauraBeatris)
+
+- Updated dependencies [[`c38d853`](https://github.com/clerk/javascript/commit/c38d8534b916936acbe4131fac58c8743e684eab), [`7e3174a`](https://github.com/clerk/javascript/commit/7e3174a4f861ad89667c3d0c63b6f2d0c001bcb6), [`0039618`](https://github.com/clerk/javascript/commit/003961810786af49daba5a3e82e34378d52b885c)]:
+  - @clerk/shared@4.21.0
+
 ## 6.20.0
 
 ### Minor Changes

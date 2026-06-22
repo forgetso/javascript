@@ -1,5 +1,17 @@
 # Change Log
 
+## 4.21.0
+
+### Minor Changes
+
+- Expose the loaded `@clerk/ui` version on the `Clerk` object via a new `uiVersion` property. It returns the version of the prebuilt UI bundle once it has loaded (for example `Clerk.uiVersion` in the browser console), or `undefined` if the UI has not been loaded yet. `@clerk/clerk-js` and `@clerk/ui` are versioned and loaded independently, so `uiVersion` can differ from `Clerk.version`. ([#8931](https://github.com/clerk/javascript/pull/8931)) by [@jacekradko](https://github.com/jacekradko)
+
+### Patch Changes
+
+- Condense the OrganizationProfile Security page SSO overview to a single summary row (one-line description, domains as chips, status badge, actions under the overflow menu) and remove the now-unused ssoSection provider/sign-on URL/issuer/descriptionLine2 localization keys. ([#8915](https://github.com/clerk/javascript/pull/8915)) by [@iagodahlem](https://github.com/iagodahlem)
+
+- Allow changing enterprise connection provider between self-serve SSO steps ([#8881](https://github.com/clerk/javascript/pull/8881)) by [@LauraBeatris](https://github.com/LauraBeatris)
+
 ## 4.20.0
 
 ### Minor Changes
